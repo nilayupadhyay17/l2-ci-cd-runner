@@ -36,11 +36,14 @@ jobs:
       run: chmod +x ./gradlew
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+    - name: Debug Build Output
+      run: ls -l build/libs
+
     - name: Verify JAR exists
       run: test -f build/libs/my-app-1.0-SNAPSHOT.jar || (echo "JAR file not found!" && exit 1)
-    - name: List Build Directory Contents
-      run: ls -l build/libs
+
     - name: Build and Push Docker Image
+      if: success()
       uses: docker/build-push-action@v6
       with:
         context: .
