@@ -40,7 +40,7 @@ jobs:
       run: ls -l build/libs
 
     - name: Verify JAR exists
-      run: test -f build/libs/my-app-1.0-SNAPSHOT.jar || (echo "JAR file not found!" && exit 1)
+      run: test -f build/libs/java-app-1.0-SNAPSHOT.jar || (echo "JAR file not found!" && exit 1)
 
     - name: Build and Push Docker Image
       if: success()
